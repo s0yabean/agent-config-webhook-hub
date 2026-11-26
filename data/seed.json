@@ -1,0 +1,62 @@
+{
+  "_comment": "SYNTHETIC sample data. Every value, name and chat ID here is made up. Phone-style IDs use the fictional 555-01xx range.",
+  "values": {
+    "default": {
+      "reply_language": "en",
+      "business_hours": "Mon-Fri 09:00-18:00",
+      "handoff_message": "Thanks, a person from the team will reply during business hours.",
+      "_synthetic": "true"
+    },
+    "support-bot": {
+      "tone": "friendly, short sentences, no emojis",
+      "max_reply_chars": "600",
+      "escalation_keywords": "refund, cancel, complaint, lawyer",
+      "faq_url": "https://example.com/help",
+      "_synthetic": "true"
+    },
+    "booking-bot": {
+      "slot_length_minutes": "30",
+      "booking_link": "https://example.com/book",
+      "timezone": "Asia/Singapore",
+      "_synthetic": "true"
+    },
+    "contacts-demo": {
+      "15550100101@c.us": "Alex Rivera (synthetic) - returning customer",
+      "15550100102@c.us": "Priya Nair (synthetic) - wholesale enquiry",
+      "15550100103@c.us": "Sam Okafor (synthetic) - booked consult",
+      "15550100104@c.us": "Mei Lin Tan (synthetic) - refund in progress",
+      "15550100105@c.us": "Jordan Blake (synthetic) - new lead"
+    }
+  },
+  "webhooks": [
+    {
+      "parentId": "support-bot",
+      "sender_id": "15550100001@c.us",
+      "webhookUrl": "http://127.0.0.1:8888/mock-agent/support-bot",
+      "description": "Synthetic: support agent workflow (local mock target)",
+      "isActive": true,
+      "headers": { "X-Agent-Name": "support-bot" }
+    },
+    {
+      "parentId": "booking-bot",
+      "sender_id": "15550100002@c.us",
+      "webhookUrl": "http://127.0.0.1:8888/mock-agent/booking-bot",
+      "description": "Synthetic: booking agent workflow (local mock target)",
+      "isActive": true
+    },
+    {
+      "parentId": "broken-bot",
+      "sender_id": "15550100003@c.us",
+      "webhookUrl": "http://127.0.0.1:8888/mock-agent/always-500",
+      "description": "Synthetic: a target that always fails, to show retries and failed deliveries",
+      "isActive": true
+    },
+    {
+      "parentId": "paused-bot",
+      "sender_id": "15550100004@c.us",
+      "webhookUrl": "http://127.0.0.1:8888/mock-agent/paused-bot",
+      "description": "Synthetic: inactive route, so its sender is rejected",
+      "isActive": false
+    }
+  ]
+}
